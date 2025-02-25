@@ -18,8 +18,10 @@ interface Items {
 
 
 const ProductCard = ({ data }: ProductCadProps) => {
+
+    // using for product reating
     const productRating = data.reviews.reduce((acc: number, item: Items) => acc + (item.rating || 0), 0) / data.reviews.length
-    // console.log(productRating);
+    //    navigate
     const routes = useRouter();
 
     return (
@@ -27,7 +29,7 @@ const ProductCard = ({ data }: ProductCadProps) => {
             onClick={() => routes.push(`/product/${data.id}`)} >
             <div className="flex flex-col items-center w-full gap-1 ">
                 <div className="aspect-square overflow-hidden relative w-full h-full " >
-                    <Image fill src={data.images[0].image} className="object-contain" alt={data.name} priority sizes="100"  />
+                    <Image fill src={data.images[0].image} className="object-contain" alt={data.name} priority sizes="100" />
                 </div>
                 <div className="mt-4">
                     {TruncateText(data.name)}

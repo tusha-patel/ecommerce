@@ -27,7 +27,6 @@ const LoginForm = ({ currentUser }: loginFormProps) => {
             router.push("/cart");
             router.refresh();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -42,7 +41,7 @@ const LoginForm = ({ currentUser }: loginFormProps) => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
-        console.log(data);
+        // console.log(data);
 
 
         signIn("credentials", {
@@ -59,8 +58,6 @@ const LoginForm = ({ currentUser }: loginFormProps) => {
             if (callback?.error) {
                 toast.error(callback.error);
             }
-
-
         })
 
     }

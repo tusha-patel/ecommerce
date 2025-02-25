@@ -18,7 +18,7 @@ interface userMenuProps {
 
 
 const UserMenu = ({ currentUser }: userMenuProps) => {
-    console.log(currentUser);
+    // console.log(currentUser);
 
 
     const [isOpen, setIsOpen] = useState(false);

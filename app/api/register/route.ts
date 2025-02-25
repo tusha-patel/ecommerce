@@ -7,31 +7,21 @@ export async function POST(request: Request) {
     try {
         const body = await request.json();
         const { name, email, password } = body;
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        const findUser = await prisma.user.findUnique({
-            where: {
-                email
+        const user = await prisma.user.create({
+            data: {
+                name,
+                email,
+                hashedPassword,
             }
         });
+        // console.log(user);
+        return NextResponse.json(user, { status: 201 });
 
-        if (findUser) {
-            return NextResponse.json("You are already register", { status: 403 });
-        } else {
-            const hashedPassword = await bcrypt.hash(password, 10);
-
-            const user = await prisma.user.create({
-                data: {
-                    name,
-                    email,
-                    hashedPassword,
-                }
-            });
-            return NextResponse.json(user, { status: 201 });
-        }
-
-    } catch (error) {
-        console.log(error, "user created error");
-        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    } catch (error:unknown) {
+        // console.log(error, "user created error");
+        return NextResponse.json({ message: 'Internal server error', error: error }, { status: 500 });
     }
 
 }

@@ -43,12 +43,12 @@ const RegisterForm = ({ currentUser }: RegisterFormProps) => {
         setIsLoading(true);
         // console.log(data);
 
-        axios.post("/api/register", data).then((res) => {
-            console.log(res);
+        axios.post("/api/register", data).then(() => {
+            // console.log(res);
 
-            if (res.data.response.status === 403) {
-                toast.error(res.data.response.data)
-            }
+            // if (res.data.response.status === 403) {
+            //     toast.error(res.data.response.data)
+            // }
 
 
             toast.success("Account created");
@@ -68,8 +68,7 @@ const RegisterForm = ({ currentUser }: RegisterFormProps) => {
                     toast.error(callback.error)
                 }
             }).catch((error) => {
-                console.log(error);
-
+                // console.log(error);
                 toast.error("something went wrong", error.message);
             }).finally(() => {
                 setIsLoading(false);
@@ -85,7 +84,7 @@ const RegisterForm = ({ currentUser }: RegisterFormProps) => {
     return (
         <div className=" flex flex-col gap-5" >
             <Heading title="Sing up for E-shop" />
-            <Button label="Sing up with Google " outline icon={AiOutlineGoogle} onClick={() => { signIn('google') }} />
+            <Button label="Sing up with Google " outline icon={AiOutlineGoogle} onClick={() => { signIn('google', { callbackUrl: "/" }) }} />
             <hr className="bg-slate-300 w-full h-px " />
             <Input id="name" label="Name" disabled={isLoading} register={register}
                 errors={errors} required type="text"

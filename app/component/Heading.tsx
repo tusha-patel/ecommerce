@@ -9,7 +9,7 @@ interface HeadingProps {
 const Heading = ({ title, center }: HeadingProps) => {
     return (
         <div className={`${center ? "text-center" : "text-start"}`} >
-            <h1 className="font-bold " >{title}</h1>
+            <h1 className="font-bold capitalize " >{title}</h1>
         </div>
     )
 }

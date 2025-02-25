@@ -10,10 +10,7 @@ interface IParams {
 }
 
 const Product = async ({ params }: { params: IParams }) => {
-    // Ensure params is awaited
     const { productId } = params;
-
-    // Fetch or find the product (assuming `products` is a database query or fetch request)
     const product = products.find((item) => item.id === productId);
 
     return (

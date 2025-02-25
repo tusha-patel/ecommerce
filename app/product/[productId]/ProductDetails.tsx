@@ -25,9 +25,8 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
     const router = useRouter();
     const { handleAddProductToCart, cartProducts } = UseCart()
     const qty: number = 1;
-
-
     const [isProductInCart, setIsProductInCart] = useState<boolean>(false)
+
     const [cartProduct, setCartProduct] = useState<CartProduct>(
         {
             id: product.id,
@@ -126,7 +125,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                     <div className="max-w-[300px]" >
                         <Button
                             label="Add to cart"
-                            onClick={() => { handleAddProductToCart(cartProduct) }}
+                            onClick={() => {handleAddProductToCart(cartProduct)}}
                         />
                     </div>
                 </>}

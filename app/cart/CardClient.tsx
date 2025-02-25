@@ -6,10 +6,17 @@ import Heading from "../component/Heading";
 import Button from "../component/Button";
 import ItemContent from "./ItemContent";
 import { FormatPrice } from "../Utils/FormatPrice";
+import { useRouter } from "next/navigation";
+import { safeUser } from "@/types";
 
-const CardClient = () => {
+
+interface CardClientProps {
+    currentUser: safeUser | null;
+}
+
+const CardClient = ({ currentUser }: CardClientProps) => {
     const { cartProducts, clearCart, cartTotalAmount } = UseCart();
-
+    const router = useRouter();
     // console.log(cartProducts);
 
     if (!cartProducts || cartProducts.length == 0) {
@@ -54,8 +61,16 @@ const CardClient = () => {
                             <span>{FormatPrice(cartTotalAmount)}</span>
                         </div>
                         <p className="text-slate-500 mb-1 " >Taxes and shipping calculate & checkout </p>
-                        <Button label="CheckOut" onClick={() => { }} />
-                        <Link href={"/"} className="text-slate-500 flex items-center gap-1 mt-2" >
+                        <Button label={currentUser ? "Checkout" : "login to checkout"}
+                            outline={currentUser ? false : true}
+                            onClick={() => {
+                                if (currentUser) {
+                                    router.push("/checkout");
+                                } else {
+                                    router.push("/login");
+                                }
+                            }} />
+                        <Link href={"/checkout"} className="text-slate-500 flex items-center gap-1 mt-2" >
                             <MdArrowBack />
                             <span>Continue shopping</span>
                         </Link>
