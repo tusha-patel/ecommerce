@@ -74,7 +74,6 @@ const CardClient = ({ currentUser }: CardClientProps) => {
                             <MdArrowBack />
                             <span>Continue shopping</span>
                         </Link>
-
                     </div>
                 </div>
             </div>

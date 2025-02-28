@@ -5,7 +5,7 @@ import Button from "@/app/component/Button";
 import SetColor from "@/app/component/product/SetColor";
 import SetImage from "@/app/component/product/SetImage";
 import SetQuantity from "@/app/component/product/SetQuantity";
-import { CartProduct, Product, ProductImage } from "@/app/Types/Product";
+import { CartProduct, ProductImage } from "@/app/Types/Product";
 import { UseCart } from "@/hooks/UseCart";
 import { Rating } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -14,7 +14,7 @@ import { MdCheckCircle } from "react-icons/md";
 
 // product type define
 interface ProductDetailsProps {
-    product: Product;
+    product: any;
 }
 
 const Horizontal = () => {
@@ -82,7 +82,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
         })
     }, [])
 
-    const ProductRating = product.reviews.reduce((acc, items) => acc + (items.rating || 0), 0) / product.reviews.length;
+    const ProductRating = product.reviews.reduce((acc:number, items:any) => acc + (items.rating || 0), 0) / product.reviews.length;
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12  ">
             <div>
@@ -125,7 +125,7 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
                     <div className="max-w-[300px]" >
                         <Button
                             label="Add to cart"
-                            onClick={() => {handleAddProductToCart(cartProduct)}}
+                            onClick={() => { handleAddProductToCart(cartProduct) }}
                         />
                     </div>
                 </>}

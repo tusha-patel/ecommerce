@@ -89,7 +89,7 @@ const CheckoutClients = () => {
                 <div className='flex flex-col items-center gap-4'>
                     <div className='text-teal-500 text-center'>Payment Success</div>
                     <div className='max-w-[220px] w-full'>
-                        <Button label='View your order' onClick={() => router.push("/order")} />
+                        <Button label='View your order' onClick={() => router.push("/orders")} />
                     </div>
                 </div>
             )}
