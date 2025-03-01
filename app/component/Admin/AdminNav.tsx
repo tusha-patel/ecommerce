@@ -3,7 +3,7 @@ import React from 'react'
 import Container from '../Container'
 import Link from 'next/link'
 import AdminNavItem from './AdminNavItem'
-import { MdDashboard, MdDns, MdForest, MdFormatListBulleted, MdLibraryAdd } from 'react-icons/md'
+import { MdDashboard, MdDns, MdFormatListBulleted, MdLibraryAdd } from 'react-icons/md'
 import { usePathname } from 'next/navigation'
 
 const AdminNav = () => {

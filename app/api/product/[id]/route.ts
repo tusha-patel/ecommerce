@@ -1,12 +1,11 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import cloudinary from "@/libs/cloudinary";
 import prisma from "@/libs/prismadb";
-import { safeUser } from "@/types";
 import { NextResponse } from "next/server";
 
 
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, context: { params: { id: string } }) {
     try {
         const currentUser = await getCurrentUser();
 
@@ -28,7 +27,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 
         let product = await prisma.product.delete({
             where: {
-                id: params.id
+                id: context.params.id
             }
         });
 

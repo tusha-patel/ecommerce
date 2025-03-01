@@ -1,6 +1,5 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import prisma from "@/libs/prismadb";
-import { safeUser } from "@/types";
 import { NextResponse } from "next/server";
 
 

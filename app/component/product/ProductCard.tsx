@@ -19,8 +19,8 @@ interface Items {
 
 const ProductCard = ({ data }: ProductCadProps) => {
 
-    // using for product reating
-    const productRating = data.reviews.reduce((acc: number, item: Items) => acc + (item.rating || 0), 0) / data.reviews.length
+    // using for product rating
+    const productRating = data.reviews?.reduce((acc: number, item: Items) => acc + (item.rating || 0), 0) / data.reviews.length
     //    navigate
     const routes = useRouter();
 
