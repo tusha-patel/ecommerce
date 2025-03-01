@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 
 
 
-export async function DELETE(request: Request, context: { params: { id: string } }) {
+export async function DELETE(request: Request, context: { params: { id: string; } }) {
     try {
         const currentUser = await getCurrentUser();
 
