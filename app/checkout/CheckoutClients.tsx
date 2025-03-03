@@ -77,22 +77,26 @@ const CheckoutClients = () => {
 
     return (
         <div className="w-full">
-            {clientSecret && cartProducts && (
-                <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm clientSecret={clientSecret}
-                        handleSetPaymentSuccess={handleSetPaymentSuccess} />
-                </Elements>
-            )}
-            {loading && !paymentSuccess && <div className='text-center'>Loading checkout...</div>}
-            {error && !paymentSuccess && <div className='text-center text-rose-500'>Something went wrong</div>}
-            {paymentSuccess && (
-                <div className='flex flex-col items-center gap-4'>
-                    <div className='text-teal-500 text-center'>Payment Success</div>
-                    <div className='max-w-[220px] w-full'>
-                        <Button label='View your order' onClick={() => router.push("/orders")} />
+            return (
+            <div className="w-full">
+                {!paymentSuccess && clientSecret && cartProducts && (
+                    <Elements options={options} stripe={stripePromise}>
+                        <CheckoutForm clientSecret={clientSecret}
+                            handleSetPaymentSuccess={handleSetPaymentSuccess} />
+                    </Elements>
+                )}
+                {loading && !paymentSuccess && <div className='text-center'>Loading checkout...</div>}
+                {error && !paymentSuccess && <div className='text-center text-rose-500'>Something went wrong</div>}
+                {paymentSuccess && (
+                    <div className='flex flex-col items-center gap-4'>
+                        <div className='text-teal-500 text-center'>Payment Success</div>
+                        <div className='max-w-[220px] w-full'>
+                            <Button label='View your order' onClick={() => router.push("/orders")} />
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
+            )
         </div>
     )
 }
